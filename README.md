@@ -1,0 +1,2 @@
+# odooconnector
+Odoo Connector
