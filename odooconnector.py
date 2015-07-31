@@ -77,7 +77,7 @@ class odooconnector:
             :type values: dict
         """
         if model and isinstance(model, str):
-            models.execute_kw(db, uid, password, model, 'write', [ids, values])
+            return self.models.execute_kw(self.db, self.uid, self.password, model, 'write', [ids, values])
 
 
     def create(self, model=None, values={}):
@@ -99,7 +99,7 @@ class odooconnector:
             :type ids: list
         """
         if model and isinstance(model, str):
-            models.execute_kw(db, uid, password, model, 'unlink', [ids])
+            return self.models.execute_kw(self.db, self.uid, self.password, model, 'unlink', [ids])
 
     #
     #   TODO: Test and improve!
