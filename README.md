@@ -6,6 +6,7 @@ Odoo Connector is a very basic library that allows you to connect your Python sc
 
 It provides basic odoo functions:
 
+- call
 - search
 - search_read
 - read
@@ -15,7 +16,7 @@ It provides basic odoo functions:
 - unlink
 
 *Browse isn't implemented and you shouldn't use it, is too slow!<br/>
-With "search", "read" or "search_read" you can do all that you need.*
+With "call", "search", "read" or "search_read" you can do all that you need.*
 
 Roadmap
 -------
