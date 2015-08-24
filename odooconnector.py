@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 #######################################
 #
-#     Multithreading odoo connector
+#        Simple odoo connector
 #
 #           www.studio73.es
 #         contacto@studio73.es
@@ -31,6 +31,21 @@ class odooconnector:
     #
     # Basic functions
     #
+
+    def call(self, model=None, ids=[], function=None, args={}):
+        """
+            :param model: model to read i.e., 'res.partner'
+            :type model: string
+            :param ids: list of integers (Ids of models)
+            :type ids: list
+            :param args: Dictionary with function to call arguments
+            :type args: dict
+        """
+        if model and isinstance(model, str):
+            res = self.models.execute_kw(self.db, self.uid, self.password, model, function, [ids], args)
+            if len(ids) == 1:
+                return res[0]
+            return res
 
     def search(self, model=None, domain=[]):
         """
