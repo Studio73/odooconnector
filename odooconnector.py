@@ -43,8 +43,6 @@ class odooconnector:
         """
         if model and isinstance(model, str):
             res = self.models.execute_kw(self.db, self.uid, self.password, model, function, [ids], args)
-            if len(ids) == 1:
-                return res[0]
             return res
 
     def search(self, model=None, domain=[]):
