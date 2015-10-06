@@ -15,18 +15,19 @@ It provides basic odoo functions:
 - create
 - unlink
 
-*Browse isn't implemented and you shouldn't use it, is too slow!<br/>
-With "call", "search", "read" or "search_read" you can do all that you need.*
+*Browse isn't implemented (yet) with "call", "search", "read" or "search_read" you can do all that you need. <br/>
+Feel free to help this project :wink:*
 
 Roadmap
 -------
+- Browse function
 - Multithreading create is under development
 - Error control
 - More... XD
 
 
- Maintainer
------------
+Maintainer
+----------
 Consultoría Informática Studio 73 S.L.<br/>
 www.studio73.es <br/>
-contacto@studio73.es
+contacto@studio73.es <br/>
