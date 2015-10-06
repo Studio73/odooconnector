@@ -8,12 +8,14 @@
 #         contacto@studio73.es
 #
 #######################################
-import xmlrpclib,threading
+import xmlrpclib
+import threading
 
 URL = 'http://localhost'
 PORT = 8069
 USER = 'admin'
 PSWD = 'admin'
+
 
 class odooconnector:
 
@@ -45,17 +47,19 @@ class odooconnector:
             res = self.models.execute_kw(self.db, self.uid, self.password, model, function, [ids], args)
             return res
 
-    def search(self, model=None, domain=[]):
+    def search(self, model=None, domain=[], args={}):
         """
             :param model: model to search i.e., 'res.partner'
             :type model: string
             :param domain: list of conditions
             :type domain: list
+            :param args: Dictionary with search arguments
+            :type args: dict
         """
         if model and isinstance(model, str):
-            return self.models.execute_kw(self.db, self.uid, self.password, model, 'search', [domain])
+            return self.models.execute_kw(self.db, self.uid, self.password, model, 'search', [domain], args)
 
-    def read(self, model=None, ids=[], fields=[]):
+    def read(self, model=None, ids=[], fields=[], args={}):
         """
             :param model: model to read i.e., 'res.partner'
             :type model: string
@@ -63,11 +67,14 @@ class odooconnector:
             :type ids: list
             :param fields: list of fields to read
             :type fields: list
+            :param args: Dictionary with read arguments
+            :type args: dict
         """
         if model and isinstance(model, str):
-            return self.models.execute_kw(self.db, self.uid, self.password, model, 'read', [ids], {'fields':fields})
+            args.update({'fields': fields})
+            return self.models.execute_kw(self.db, self.uid, self.password, model, 'read', [ids], args)
 
-    def search_read(self, model=None, domain=[], fields=[]):
+    def search_read(self, model=None, domain=[], fields=[], args={}):
         """
             :param model: model to search and read i.e., 'res.partner'
             :type model: string
@@ -75,10 +82,12 @@ class odooconnector:
             :type domain: list
             :param fields: list of fields to read
             :type fields: list
+            :param args: Dictionary with search_read arguments
+            :type args: dict
         """
         if model and isinstance(model, str):
-            return self.models.execute_kw(self.db, self.uid, self.password, model, 'search_read', [domain], {'fields':fields})
-
+            args.update({'fields': fields})
+            return self.models.execute_kw(self.db, self.uid, self.password, model, 'search_read', [domain], args)
 
     def write(self, model=None, ids=[], values={}):
         """
@@ -92,7 +101,6 @@ class odooconnector:
         if model and isinstance(model, str):
             return self.models.execute_kw(self.db, self.uid, self.password, model, 'write', [ids, values])
 
-
     def create(self, model=None, values={}):
         """
             :param model: model to create i.e., 'res.partner'
@@ -102,7 +110,6 @@ class odooconnector:
         """
         if model and isinstance(model, str):
             return self.models.execute_kw(self.db, self.uid, self.password, model, 'create', [values])
-
 
     def unlink(self, model=None, ids=[]):
         """
