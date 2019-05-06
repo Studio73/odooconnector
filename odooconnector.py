@@ -8,7 +8,7 @@
 #         contacto@studio73.es
 #
 #######################################
-import xmlrpclib
+import xmlrpc
 import threading
 
 URL = 'http://localhost'
@@ -27,8 +27,8 @@ class odooconnector:
         self.port = port
         self.user = user
         self.password = pswd
-        self.common = xmlrpclib.ServerProxy('{}/xmlrpc/2/common'.format(self.url_port))
-        self.models = xmlrpclib.ServerProxy('{}/xmlrpc/2/object'.format(self.url_port))
+        self.common = xmlrpc.ServerProxy('{}/xmlrpc/2/common'.format(self.url_port))
+        self.models = xmlrpc.ServerProxy('{}/xmlrpc/2/object'.format(self.url_port))
         self.uid = self.common.authenticate(self.db, self.user, self.password, {})
     #
     # Basic functions
